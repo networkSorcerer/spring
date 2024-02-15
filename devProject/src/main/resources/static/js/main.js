@@ -30,4 +30,28 @@ $(function() {
 		$("#exam02ListForm").submit();
 	});
 	
+	$("#exam02BeanBtn").on("click", ()=> {
+		$("#exam02BeanForm").attr({
+			method:"get",
+			action:"/sample/exam02Bean"
+		});
+		$("#exam02BeanForm").submit();
+	});
+	$("#exam02BeanBtn1").on("click", ()=> {
+		$("#exam02BeanForm1").attr({
+			method:"get",
+			action:"/sample/exam02Bean1"
+		});
+		$("#exam02BeanForm1").submit();
+	});
+	
+	
+	$("#exam03Btn").on("click", ()=> {
+		$("#exam03Form").attr({
+			method:"get",
+			action:"/sample/exam03"
+		});
+		$("#exam03Form").submit();
+	});
+	
 });

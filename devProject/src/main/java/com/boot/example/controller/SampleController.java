@@ -9,10 +9,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.boot.example.domain.ExampleVO;
 import com.boot.example.domain.SampleDTO;
+import com.boot.example.domain.SampleDTOList;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -83,5 +88,29 @@ public class SampleController {
 		model.addAttribute("language", language);
 		
 		return "example/exam02List";
+	}
+	
+	@GetMapping("/exam02Bean")
+	public String exam02Bean(@ModelAttribute SampleDTOList list) {
+		log.info("list dtoList : " + list);
+		
+		return "example/exam02Bean";
+	}
+	
+	@GetMapping("/exam02Bean1")
+	public String exam02Bean1(ExampleVO exampleVO) {
+		log.info("ExampleVO: " + exampleVO);
+		
+		return "example/exam02Bean1";
+	}
+	
+	
+	@GetMapping("/exam03")
+	public String exam03(SampleDTO dto, @ModelAttribute("number") int number) {
+		log.info("dto: " + dto);
+		log.info("number : " + number);
+		
+		return "example/exam03";
+		
 	}
 }
