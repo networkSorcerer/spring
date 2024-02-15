@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -8,8 +10,12 @@
 	</head>
 	<body>
 		<div>
-			<label>이름</label>${sampleDTO.name }
-			<label>나이</label>${sampleDTO.age }
-		</div>		
+			<h3>내가 배운 언어들 </h3>
+			<ul>
+				<c:forEach var="lang" items="${language}" >
+					<li>${lang}</li>
+				</c:forEach>
+			</ul>
+		</div>
 	</body>
 </html>
