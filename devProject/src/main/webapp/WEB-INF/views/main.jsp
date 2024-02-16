@@ -150,32 +150,52 @@
 			<h5>XML/JSON 값 요청 예제 - ExampleController 요청</h5>
 			
 			<div class = "list-group mb-3">
-				<a href = "/sample/exam04" class = "list-group-item list-group-item-action">
+				<a href = "/example/getText" class = "list-group-item list-group-item-action">
 					데이터로만 반환 (단순 문자열) - getText
 				</a>
 				
-				<a href = "/sample/exam05" class="list-group-item list-group-item-action">
+				<a href = "/example/getExample" class="list-group-item list-group-item-action">
 					데이터로만 반환 (json-1) - getExample
 				</a>
 				
-				<a href = "/sample/exam06" class = "list-group-item list-group-item-action">
+				<a href = "/example/getExample2" class = "list-group-item list-group-item-action">
 					데이터로만 반환 (xml) - getExample2
 				</a>
 				
-				<a href = "/sample/exam06" class = "list-group-item list-group-item-action">
+				<a href = "/example/getExample3" class = "list-group-item list-group-item-action">
 					데이터로만 반환 (xml-기본값) - getExample3
 				</a>
 				
-				<a href = "/sample/exam06" class = "list-group-item list-group-item-action">
+				<a href = "/example/getList" class = "list-group-item list-group-item-action">
 					데이터로만 반환 (json-List) - getList
 				</a>
 				
-				<a href = "/sample/exam06" class = "list-group-item list-group-item-action">
+				<a href = "/example/getMap" class = "list-group-item list-group-item-action">
 					데이터로만 반환 (json-Map) - getMap
 				</a>
 			</div>
 			
-				
+			<br />
+			
+			<h5>Ajax 요청</h5>
+			<button type ="button" id="jsonBtn" class="btn btn-success">json 데이터 요청</button>
+			<ul id="dataArea" class="list-iinline"></ul>
+			
+			<button type="button" id="jsonListBtn" class="btn btn-success">List 데이터 요청</button><br />
+			<div class = "row col-sm-6" id="list">
+				<table class = "table table-striped">
+					<thead>
+						<tr>
+							<th>번호</th>
+							<th>이름</th>
+							<th>핸드폰</th>
+						</tr>
+					</thead>
+					<tbody id = "listData"></tbody>
+				</table>
+			</div>
+			
+			
 			</div>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 		<script src="/resources/js/jquery-3.7.1.min.js"></script>
