@@ -5,6 +5,9 @@ package com.boot.example.controller;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -113,4 +116,40 @@ public class SampleController {
 		return "example/exam03";
 		
 	}
+	
+	
+	@GetMapping(value="/exam04", produces = "text/plain; charset=UTF-8")
+	@ResponseBody
+	public String exam04() {
+		return "화면에 데이터 그대로 출력합니다";
+	}
+	
+	@GetMapping("/exam05")
+	//@GetMapping(value="/exam05", produces = "application/json; charset=UTF-8")
+	@ResponseBody
+	public SampleDTO exam05() {
+		log.info("/exam05..............");
+		
+		SampleDTO dto = new SampleDTO();
+		dto.setAge(38);
+		dto.setName("홍길동");
+		
+		return dto;
+	}
+	
+	@GetMapping("/exam06")
+	public ResponseEntity<SampleDTO> exam06() {
+		log.info("/exam06..................");
+		
+		SampleDTO dto = new SampleDTO();
+		dto.setAge(25);
+		dto.setName("김철수");
+		
+		HttpHeaders header = new HttpHeaders();
+		header.add("Content-Type", "application/json;charset-UTF-8");
+		
+		return new ResponseEntity<>(dto, header, HttpStatus.OK);
+	}
+	
+	
 }
