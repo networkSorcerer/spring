@@ -4,4 +4,10 @@
 	<select id="getDate" resultType="java.lang.String">
 		select to_char(sysdate, 'yyyy-mm-dd hh24:mi:dd') as dateTime from dual
 	</select>
+	
+	<select id="getBookList" resultType="BooksVO">
+		SELECT BOOK_ID AS bookId, TITLE, PUBLISHER, YEAR, PRICE
+		FROM BOOKS
+		ORDER BY BOOK_ID
+	</select>
 </mapper>
