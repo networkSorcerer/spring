@@ -6,4 +6,9 @@
 		FROM books
 		ORDER BY book_id
 	</select>
+	
+	<insert id = "bookInsert" parameterType="BookVO">
+		INSERT INTO books(book_id, title, publisher, year, price)
+		VALUES (books_seq.nextval, #{title},#{publisher}, #{year}, #{price})
+	</insert>
 </mapper>

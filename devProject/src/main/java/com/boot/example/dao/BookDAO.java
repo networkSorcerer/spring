@@ -9,4 +9,5 @@ import com.boot.example.domain.BookVO;
 @Mapper
 public interface BookDAO {
 	public List<BookVO> bookList();
+	public int bookInsert (BookVO bookVO);
 }

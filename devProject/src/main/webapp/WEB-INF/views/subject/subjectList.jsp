@@ -6,7 +6,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>책정보 리스트</title>
+		<title>학과 정보 리스트</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     	<!-- Bootstrap CSS -->
     	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -34,50 +34,42 @@
 	</head>
 	<body>
 		<div class="container">
-			<div class =" text- center"><h3>책정보 조회</h3></div>
+			<div class =" text- center"><h3>학과 정보 조회</h3></div>
 			<div class = "row">
 				<div class="col-xs-6">
-					<table class="table table-hover">
+					<table class="table table-striped">
 						<thead>
 							<tr>
-								<th scope="col">책번호</th>
-								<th scope="col">책제목</th>
-								<th scope="col">출판사</th>
-								<th scope="col">출간연도</th>
-								<th scope="col">책가격</th>
+								<th scope="col">번호</th>
+								<th scope="col">학과번호</th>
+								<th scope="col">학과이름</th>
+								<th scope="col">수정여부</th>
+								<th scope="col">삭제여부</th>
 							</tr>
 						</thead>
 						<tbody>
 							<c:choose>
-								<c:when test="${not empty bookList}">
-									<c:forEach var = "book" items="${bookList}">
-										<tr data-id="${book.bookId }">
-											<th scope="row">${book.bookId }</th>
-											<td>${book.title }</td>
-											<td>${book.publisher }</td>
-											<td>${book.year }</td>
-											<td>${book.price }</td>
+								<c:when test="${not empty subjectList}">
+									<c:forEach var = "subject" items="${subjectList}">
+										<tr data-no="${subject.no }">
+											<td>${subject.no }</td>
+											<td>${subject.s_num }</td>
+											<td>${subject.s_name }</td>
 										</tr>
 									</c:forEach>
 								</c:when>
 								<c:otherwise>
 									<tr>
-										<td colspan="5">등록된 책이 존재하지 않습니다</td>
+										<td colspan="5">등록된 학과가 존재하지 않습니다</td>
 									</tr>
 								</c:otherwise>
 							</c:choose>
 						</tbody>
 					</table>
 				</div>
-				<div class="col-xs-6">
-					<%@ include file="insertForm.jsp" %>
-				</div>
 			</div>
 		</div>
 		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
-    	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
-    	<script src="/resources/js/jquery-3.7.1.min.js"></script>
-    	<script src="/resources/js/common.js"></script>
-    	<script src="/resources/js/book.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
 	</body>
 </html>

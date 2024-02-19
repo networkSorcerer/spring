@@ -28,4 +28,15 @@ public class BookTests {
 		}
 		log.info("레코드수: " + list.size());
 	}
+	
+	@Test
+	public void testBookInsert() {
+		BookVO bookVO = new BookVO();
+		bookVO.setTitle("나는 메트로폴리탄 미술관의 경비원입니다");
+		bookVO.setPublisher("웅진지식하우스");
+		bookVO.setYear("2023");
+		bookVO.setPrice(17500);
+		
+		log.info("적용된 행의 수 : " + bookDAO.bookInsert(bookVO));
+	}
 }
