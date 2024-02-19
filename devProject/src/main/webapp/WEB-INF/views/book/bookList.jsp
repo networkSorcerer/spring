@@ -30,11 +30,19 @@
         .alert {
             margin-top: 20px;
         }
+         .custom-image {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
     </style>
 	</head>
 	<body>
 		<div class="container">
-			<div class =" text- center"><h3>책정보 조회</h3></div>
+			<div class="custom-image">
+            <img src="https://search.pstatic.net/sunny/?src=https%3A%2F%2Fpng.pngtree.com%2Fpng-clipart%2F20220125%2Foriginal%2Fpngtree-a-stack-of-books-png-image_7205807.png&type=sc960_832" alt="Your Image" width="200" height="200">
+        	</div>
+			<div class =" text- center"><h3>&#x1F4D6;책정보 조회&#x1F4D6;</h3></div>
 			<div class = "row">
 				<div class="col-xs-6">
 					<table class="table table-hover">
@@ -45,6 +53,7 @@
 								<th scope="col">출판사</th>
 								<th scope="col">출간연도</th>
 								<th scope="col">책가격</th>
+								<th scope="col">삭제여부</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -57,6 +66,8 @@
 											<td>${book.publisher }</td>
 											<td>${book.year }</td>
 											<td>${book.price }</td>
+											<td><button type="button" class="updateBtn btn btn-primary">수정</button></td>
+											<td><button class="deleteBtn btn btn-primary">삭제</button></td>
 										</tr>
 									</c:forEach>
 								</c:when>

@@ -50,4 +50,12 @@ public class BookController {
     	bookService.bookInsert(bookVO);
     	return "redirect:/book/bookList";
     }
+    
+    
+    @GetMapping("/bookDelete")
+    public String bookDelete(BookVO bookVO) {
+    	log.info("bookId: " + bookVO.getBookId());
+    	bookService.bookDelete(bookVO);
+    	return "redirect:/book/bookList";
+    }
 }

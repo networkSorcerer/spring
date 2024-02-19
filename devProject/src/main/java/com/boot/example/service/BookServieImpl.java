@@ -30,4 +30,10 @@ public class BookServieImpl implements BookService {
 		int result = bookDAO.bookInsert(bookVO);
 		return result;
 	}
+	
+	@Override
+	public int bookDelete(BookVO bookVO) {
+		int result = bookDAO.bookDelete(bookVO);
+		return result;
+	}
 }

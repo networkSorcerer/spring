@@ -6,7 +6,7 @@ $(function(){
 		else if(!chkData("#price","책가격을")) return;
 		else {
 			$("#insertForm").attr("method", "post");
-			$("#insetForm").attr("action", "/book/bookInsert");
+			$("#insertForm").attr("action", "/book/bookInsert");
 			$("#insertForm").submit();
 		}
 	});
@@ -14,5 +14,12 @@ $(function(){
 		$("#insertForm").each(function(){
 			this.reset();
 		});
+	});
+	
+	$(".deleteBtn").on("click", function(){
+		let bookId = $(this).parents("tr").attr("data-id");
+		if(confirm("선택하신 책 삭제하시겠습니까?")) {
+			location.href = "/book/bookDelete?bookId="+bookId;
+		}
 	});
 });
