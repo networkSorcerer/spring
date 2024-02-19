@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.boot.example.domain.BooksVO;
+import com.boot.example.domain.BookVO;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -34,8 +34,8 @@ public class ExampleMapperTests {
 	@Test
 	public void testBookList() {
 		log.info("getBookList() 메서드 실행");
-		List<BooksVO> list = exampleMapper.getBookList();
-		for(BooksVO vo : list) {
+		List<BookVO> list = exampleMapper.getBookList();
+		for(BookVO vo : list) {
 			log.info(vo.toString());
 		}
 		log.info("레코드수: " + list.size());

@@ -5,7 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
-import com.boot.example.domain.BooksVO;
+import com.boot.example.domain.BookVO;
 
 
 
@@ -16,7 +16,7 @@ public interface ExampleMapper {
 	
 	public String getDate();
 	
-	public List<BooksVO> getBookList();
+	public List<BookVO> getBookList();
 }
 
 
