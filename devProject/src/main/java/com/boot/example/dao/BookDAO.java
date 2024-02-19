@@ -1,5 +1,12 @@
 package com.boot.example.dao;
 
-public interface BookDAO {
+import java.util.List;
 
+import org.apache.ibatis.annotations.Mapper;
+
+import com.boot.example.domain.BookVO;
+
+@Mapper
+public interface BookDAO {
+	public List<BookVO> bookList();
 }
