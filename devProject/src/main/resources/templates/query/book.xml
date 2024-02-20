@@ -15,4 +15,10 @@
 	<delete id="bookDelete" parameterType="BookVO">
 		DELETE FROM books WHERE book_id = #{bookId}
 	</delete>
+	
+	<update id="bookUpdate" parameterType="BookVO">
+		UPDATE books
+		SET title = #{title}, publisher = #{publisher}, year = #{year}, price = #{price}
+		WHERE book_id = #{bookId}
+	</update>
 </mapper>

@@ -117,7 +117,7 @@ public class SampleController {
 		
 	}
 	
-	
+	//ResponseBody: 일반적인 JSP와 같은 뷰로 전달되는 게 아니라 데이터 자체를 전달하기 위한 용도이다
 	@GetMapping(value="/exam04", produces = "text/plain; charset=UTF-8")
 	@ResponseBody
 	public String exam04() {

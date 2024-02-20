@@ -40,11 +40,23 @@ public class BookTests {
 //		log.info("적용된 행의 수 : " + bookDAO.bookInsert(bookVO));
 //	}
 	
+//	@Test
+//	public void testBookDelete() {
+//		BookVO bookVO = new BookVO();
+//		bookVO.setBookId(10);
+//		
+//		log.info("적용된 행의 수 : " + bookDAO.bookDelete(bookVO));
+//	}
+	
 	@Test
-	public void testBookDelete() {
+	public void testBookUpdate() {
 		BookVO bookVO = new BookVO();
-		bookVO.setBookId(10);
+		bookVO.setTitle("겱국 원하는 대로 이루어질 거야");
+		bookVO.setPublisher("로망스");
+		bookVO.setYear("2024");
+		bookVO.setPrice(18000);
+		bookVO.setBookId(12);
 		
-		log.info("적용된 행의 수 : " + bookDAO.bookDelete(bookVO));
+		log.info("적용된 행의 수 : " + bookDAO.bookUpdate(bookVO));
 	}
 }
