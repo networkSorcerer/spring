@@ -78,4 +78,16 @@ public class BoardController {
 		
 		return "client/board/boardDetail";
 	}
+	
+	@GetMapping(value="/updateForm")
+	public String updateForm(@ModelAttribute BoardVO bvo, Model model) {
+		log.info("updateForm 호출 성공");
+		log.info("boardNumber = " + bvo.getBoardNumber());
+		
+		BoardVO updateData = boardService.updateForm(bvo);
+		
+		model.addAttribute("updateData", updateData);
+		return "client/board/updateForm";
+	}
+	
 }

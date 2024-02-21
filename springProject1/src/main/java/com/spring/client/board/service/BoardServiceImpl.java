@@ -45,4 +45,11 @@ public class BoardServiceImpl implements BoardService{
 		}
 		return detail;
 	}
+	
+	@Override
+	public BoardVO updateForm(BoardVO bvo) {
+		BoardVO updateData = null;
+		updateData = boardDAO.boardDetail(bvo);
+		return updateData;
+	}
  }

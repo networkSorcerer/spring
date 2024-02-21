@@ -37,7 +37,7 @@
 	<select id="boardDetail" parameterType="board" resultMap="boardMap">
 		SELECT
 			b_num, b_name, b_title, b_content,
-			TO_CHAR(b_date, 'YYYY_MM_DD HH24:MT:SS') AS b_date, readcnt
+			TO_CHAR(b_date, 'YYYY-MM-DD HH24:MI:SS') AS b_date, readcnt
 		FROM spring_board
 		WHERE b_num = #{boardNumber}
 	</select>

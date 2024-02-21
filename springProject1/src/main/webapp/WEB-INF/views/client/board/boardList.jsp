@@ -5,6 +5,13 @@
 <body>
 	<div class ="container">
 		<div class="text-center"><h3>게시판 리스트</h3></div>
+		
+		<form id="detailForm">
+			<input type="hidden" id="boardNumber" name="boardNumber"/>
+		</form>
+		
+		<div id="boardSearch" class="text-right"></div>
+		
 		<div id="boardList">
 			<table summary="게시판 리스트" class="table table-striped">
 				<thead>
@@ -20,7 +27,7 @@
 					<c:choose>
 						<c:when test="${not empty boardList }">
 							<c:forEach var="board" items="${boardList }" varStatus="status">
-								<tr class = "text-center" data-num="$[board.boardNumber]">
+								<tr class = "text-center" data-num="${ board.boardNumber}">
 									<td>${board.boardNumber }</td>
 									<td class="goDetail text-start">${board.boardTitle} </td>
 									<td class="name">${board.boardName }</td>
