@@ -9,5 +9,8 @@ import com.spring.client.board.vo.BoardVO;
 @Mapper
 public interface BoardDAO {
 	public List<BoardVO> boardList(BoardVO bvo);
+	public int boardInsert(BoardVO bvo);
+	public BoardVO boardDetail(BoardVO bvo);
+	public int readCntUpdate(BoardVO bvo);
 }
  

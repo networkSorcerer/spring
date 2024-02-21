@@ -22,4 +22,27 @@ public class BoardServiceImpl implements BoardService{
 		list = boardDAO.boardList(bvo);
 		return list;
 	}
+	
+	@Override
+	public int boardInsert(BoardVO bvo) {
+		int result = 0;
+		//예외를 발생시킬 코드 작성
+//		bvo.setBoardNumber(0);
+//		if(bvo.getBoardNumber() == 0)  {
+//			return result;
+//		}
+		result = boardDAO.boardInsert(bvo);
+		return result;
+	}
+	
+	@Override
+	public BoardVO boardDetail(BoardVO bvo) {
+		boardDAO.readCntUpdate(bvo);
+		
+		BoardVO detail = boardDAO.boardDetail(bvo);
+		if(detail != null) {
+			detail.setBoardContent(detail.getBoardContent().replaceAll("\n", "<br/>"));
+		}
+		return detail;
+	}
  }
