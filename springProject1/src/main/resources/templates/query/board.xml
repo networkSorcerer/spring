@@ -66,7 +66,7 @@
 	</delete>
 		
 	<!-- 게시판 리스트 기본 조회 -->
-	<select id="boardList" parameterType="board" resultMap="boardMap">
+	<!-- <select id="boardList" parameterType="board" resultMap="boardMap">
 		SELECT b_num, b_name, b_title, to_char(b_date, 'YYYY-MM-DD')as b_date, readcnt
 		FROM spring_board
 		<where>
@@ -81,10 +81,10 @@
 			</if>
 		</where>
 		ORDER BY b_num desc
-	</select>
+	</select> -->
 	
 	<!-- 전체 레코드 수 조회 -->
-	<select id="boardListCnt" parameterType="board" resultType="int">
+	<!-- <select id="boardListCnt" parameterType="board" resultType="int">
 		SELECT count(*) FROM spring_board
 		<where>
 			<if test="search=='b_title'">
@@ -97,5 +97,35 @@
 				<![CDATA[b_name LIKE '%' || #{keyword} || '%']]>
 			</if>
 		</where>
+	</select> -->
+	
+	<sql id="boardSearch">
+		<if test="search=='b_title'">
+			<![CDATA[b_title LIKE '%'||#{keyword} || '%']]>
+		</if>
+		<if test="search=='b_content'">
+			<![CDATA[b_content LIKE '%' || #{keyword}||'%']]>
+		</if>
+		<if test="search=='b_name'">
+			<![CDATA[b_name LIKE '%' || #{keyword} || '%']]>
+		</if>
+	</sql>
+	
+	<!-- 게시판 리스트 검색 포함 조회 -->
+	<select id="boardList" parameterType="board" resultMap="boardMap">
+		SELECT b_num, b_name, b_title, to_char(b_date,'YYYY-MM-DD') as b_date, readcnt
+		FROM spring_board
+		<where>
+			<include refid="boardSearch"></include>
+		</where>
+		ORDER BY b_num desc
+	</select>
+	
+	<!-- 전체 레코드 수 조회 -->
+	<select id="boardListCnt" parameterType="board" resultType="int">
+		SELECT count(*) FROM spring_board
+		<trim prefix=" where (" suffix=")" >
+			<include refid="boardSearch"></include>
+		</trim> 
 	</select>
 </mapper>
