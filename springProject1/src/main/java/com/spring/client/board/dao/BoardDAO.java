@@ -15,5 +15,7 @@ public interface BoardDAO {
 	public int pwdConfirm(BoardVO bvo);
 	public int boardUpdate(BoardVO bvo);
 	public int boardDelete(BoardVO bvo);
+	public int boardListCnt(BoardVO bvo); //board테이블의 전체 레코드 수
+	
 }
  

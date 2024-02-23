@@ -32,9 +32,7 @@
 		        <tr>
 		          	<th>글내용</th>
 		          	<td class="text-start">
-		            <textarea name="boardContent" id="boardContent" rows="8" class="form-control">
-		            ${updateData.boardContent }
-		            </textarea>
+		            <textarea name="boardContent" id="boardContent" rows="8" class="form-control">${updateData.boardContent }</textarea>
 		          	</td>
 		        </tr>
 		        <tr>

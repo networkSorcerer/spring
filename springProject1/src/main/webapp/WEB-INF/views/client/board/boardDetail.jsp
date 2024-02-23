@@ -13,9 +13,9 @@
 		<div class="row text-center mb_2">
 			<div id="pwdChk" class="col-md-9 text-start">	
 				<form name="f_passwdCheck" id="f_passwdCheck" class="row g-3">
-					
+					<input type="hidden" name="boardNumber" value="${detail.boardNumber }"/>
 					<div class="col-auto">
-						<label for="" class="visually-hidden">비밀번호</label>
+						<label for="boardPasswd" class="visually-hidden">비밀번호</label>
 						<input type="password" class="form-control" name="boardPasswd" id="boardPasswd" placeholder="비밀번호 입력" />
 					</div>
 					<div class="col-auto">
@@ -28,8 +28,8 @@
 				</form>				
 			</div>
 			
-			</div>
-			<div class="col-md-3" text-end>
+
+			<div class="col-md-3 text-end">
 				<button type="button" id="updateFormBtn" class="btn btn-success btn-sm">글수정</button>
 				<button type="button" id="boardDeleteBtn" class="btn btn-success btn-sm">글삭제</button>
 				<button type="button" id="insertFormBtn" class="btn btn-success btn-sm">글쓰기</button>

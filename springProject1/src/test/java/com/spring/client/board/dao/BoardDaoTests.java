@@ -69,13 +69,27 @@ public class BoardDaoTests {
 //		log.info("수정된 행의 수 : " + count);
 //	}
 	
+//	@Test
+//	public void testPwdConfirm() {
+//		BoardVO bvo = new BoardVO();
+//		bvo.setBoardNumber(1);
+//		bvo.setBoardPasswd("1234");
+//		int result = boardDAO.pwdConfirm(bvo);
+//		
+//		log.info("result : " + result);
+//	}
+	
 	@Test
-	public void testPwdConfirm() {
+	public void testBoardList() {
 		BoardVO bvo = new BoardVO();
-		bvo.setBoardNumber(1);
-		bvo.setBoardPasswd("1234");
-		int result = boardDAO.pwdConfirm(bvo);
 		
-		log.info("result : " + result);
+		bvo.setSearch("b_title");
+		bvo.setKeyword("노력");
+		
+		List<BoardVO> list = boardDAO.boardList(bvo);
+		for(BoardVO vo : list) {
+			log.info(vo.toString());
+		}
+		log.info("총 레코드 수 : " + boardDAO.boardListCnt(bvo));
 	}
 }

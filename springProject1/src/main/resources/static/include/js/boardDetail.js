@@ -45,12 +45,7 @@ $(function(){
 		$("#pwdChk").css("visibility", "hidden");
 		buttonCheck = "";
 	});
-	
-	$("#passwdBtn").on("click", function(){
-		$("#boardPasswd").val("");
-		$("#pwdChk").css("visibility", "hidden");
-		buttonCheck = "";
-	});
+
 	
 	$("#passwdBtn").on("click", function(){
 		$.ajax({
@@ -92,7 +87,7 @@ $(function(){
 	});
 })
 
-function adtionProcess(method, gourl) {
+function actionProcess(method, goUrl) {
 	$("#f_data").attr({
 		"method":method,
 		"action":goUrl
