@@ -39,21 +39,43 @@ public class BoardDaoTests {
 //		
 //	}
 	
-	@Test
-	public void testReadCntUpdate() {
-		BoardVO bvo = new BoardVO();
-		bvo.setBoardNumber(1);
-		
-		int count = boardDAO.readCntUpdate(bvo);
-		log.info("수정된 행의 수 : " + count);
-	}
+//	@Test
+//	public void testReadCntUpdate() {
+//		BoardVO bvo = new BoardVO();
+//		bvo.setBoardNumber(1);
+//		
+//		int count = boardDAO.readCntUpdate(bvo);
+//		log.info("수정된 행의 수 : " + count);
+//	}
+//	
+//	@Test
+//	public void testBoardDetail() {
+//		BoardVO bvo = new BoardVO();
+//		bvo.setBoardNumber(1);
+//		
+//		BoardVO board = boardDAO.boardDetail(bvo);
+//		log.info(board.toString());
+//	}
+	
+//	@Test
+//	public void testBoardUpdate() {
+//		BoardVO board = new BoardVO ();
+//		board.setBoardTitle("용기가 필요할 때 수정~!");
+//		board.setBoardContent("당신이 할 수 있다고 믿든, 할수 없다고 믿든, 믿는 대로 될것이다~!");
+//		//board.setBoardPasswd("4321");
+//		board.setBoardNumber(2);
+//		
+//		int count = boardDAO.boardUpdate(board);
+//		log.info("수정된 행의 수 : " + count);
+//	}
 	
 	@Test
-	public void testBoardDetail() {
+	public void testPwdConfirm() {
 		BoardVO bvo = new BoardVO();
 		bvo.setBoardNumber(1);
+		bvo.setBoardPasswd("1234");
+		int result = boardDAO.pwdConfirm(bvo);
 		
-		BoardVO board = boardDAO.boardDetail(bvo);
-		log.info(board.toString());
+		log.info("result : " + result);
 	}
 }

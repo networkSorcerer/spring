@@ -50,6 +50,7 @@
     	let errorMsg = "${errorMsg}";
     	if(errrorMsg != "") {
     		alert(errorMsg);
+    		errorMsg ="";
     	}
     });
     </script>

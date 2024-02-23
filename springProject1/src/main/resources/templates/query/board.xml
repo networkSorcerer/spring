@@ -41,4 +41,27 @@
 		FROM spring_board
 		WHERE b_num = #{boardNumber}
 	</select>
+	
+	<select id="pwdConfirm" parameterType="board" resultType="int">
+		SELECT NVL((
+					SELECT 1 FROM spring_board
+					WHERE b_num = #{boardNumber}AND b_pwd = #{boardPasswd}
+					), 0) as state
+		FROM dual
+	</select>
+	
+	<update id="boardUpdate" parameterType="board">
+		UPDATE spring_board
+		SET b_title = #{boardTitle},
+			b_content = #{boardContent},
+			b_date = sysdate
+			<if test ="boardPasswd != ''">
+				, b_pwd = #{boardPasswd}
+			</if>
+		WHERE b_num = #{boardNumber}
+	</update>
+	
+	<delete id ="boardDelete" parameterType="board">
+		DELETE FROM spring_board WHERE b_num = #{boardNumber}
+	</delete>
 </mapper>

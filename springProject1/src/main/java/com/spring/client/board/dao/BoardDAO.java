@@ -12,5 +12,8 @@ public interface BoardDAO {
 	public int boardInsert(BoardVO bvo);
 	public BoardVO boardDetail(BoardVO bvo);
 	public int readCntUpdate(BoardVO bvo);
+	public int pwdConfirm(BoardVO bvo);
+	public int boardUpdate(BoardVO bvo);
+	public int boardDelete(BoardVO bvo);
 }
  

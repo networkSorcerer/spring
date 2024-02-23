@@ -9,8 +9,24 @@
 			<input type="hidden" name="boardNumber" value="${detail.boardNumber }"/>
 		</form>
 		
+		
 		<div class="row text-center mb_2">
-			<div id="pwdChk" class="col-md-9 text-start">
+			<div id="pwdChk" class="col-md-9 text-start">	
+				<form name="f_passwdCheck" id="f_passwdCheck" class="row g-3">
+					
+					<div class="col-auto">
+						<label for="" class="visually-hidden">비밀번호</label>
+						<input type="password" class="form-control" name="boardPasswd" id="boardPasswd" placeholder="비밀번호 입력" />
+					</div>
+					<div class="col-auto">
+						<button type="button" class="btn btn-secondary btn-sm" id="passwdBtn">확인</button>
+						<button type="button" class="btn btn-secondary btn-sm" id="passwdCancelBtn">취소</button>
+					</div>
+					<div class="col-auto">
+						<span id="message" class="align-middle"></span>
+					</div>
+				</form>				
+			</div>
 			
 			</div>
 			<div class="col-md-3" text-end>
