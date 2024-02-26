@@ -34,4 +34,11 @@ public class DataController {
 		StringBuffer sb = dataService.chungnamList();
 		return sb.toString();
 	}
+	
+	@GetMapping(value="/chungnamDetailView")
+	public String chungnamDetailView() {
+		log.info("충남 관광 명소 상세 페이지 화면");
+		
+		return "data/chungnamDetailView";
+	}
 }

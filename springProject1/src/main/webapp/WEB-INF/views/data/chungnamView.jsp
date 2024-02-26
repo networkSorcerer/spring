@@ -46,11 +46,17 @@
 					alert(textStatus + " (HTTP-" + xhr.status + "/" + errorThrown + ")");
 				}
 			});
+			$(document).on("click", ".detailBtn", function(){
+				event.preventDefault();
+				let mng_no = $(this).parents("div.item").attr("data-mngno");
+				//console.log("mng_no="+mng_no);
+				location.href = "/data/chungnamDetailView?mng_no="+mng_no;
+			});
 		});
 	</script>
 <body>
 	<div class = "container">
-		<div class="text-center"><h3>충남관광 - 관광명소</h3></div>
+		<div class="text-center"><h3 clss="mb-2">충남관광 - 관광명소</h3></div>
 		
 		<!-- <div class="row" id="list">
 			<div class="card item mb-2 mr-2" style="width: 18rem;" id="item-template">
@@ -68,8 +74,9 @@
 		      <a href="#" data-lightbox="roadtrip" class="item-light"><img class="card-img-top"></a>
 		      <div class="card-body">
 		        <h5 class="card-title item-title"></h5>
+		        <p class="card-text"><small class="text-body-secondary item-type"></small></p>
 		        <p class="card-text item-sub"></p>
-		        <a href="#" class="btn btn-primary detailBtn">상세정보</a>
+		        <a  class="btn btn-primary detailBtn" >상세정보</a>
 		      </div>
 		    </div>
 		  </div>
