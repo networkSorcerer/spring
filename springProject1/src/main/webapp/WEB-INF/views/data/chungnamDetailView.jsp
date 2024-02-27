@@ -2,12 +2,61 @@
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/common/common.jspf" %>
 
-
+	
 	<link rel="stylesheet" type="text/css" href="/resources/include/css/chungnam.css"/>
 	<link rel="stylesheet" type="text/css" href="/resources/include/css/lightbox.css"/>
 	<script src="/resources/include/js/lightbox.min.js"></script>
 	
-	<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey={e606ce0c708054c07480dbc81c66db4b}"></script>
+	
+<body>
+	<div class = "container">
+		<div class="text-center"><h3 class="mb-2">충남관광 - 관광명소 상세정보</h3></div>
+		<div class="container my-5">
+			<div class = "p-5 text-center bg-body-tertiary rounded-3">
+				<div id="map"></div>
+			</div>
+		</div>
+		
+		<div id="detailData">
+			<div class ="card" id="item-template">
+				<h5 class = "card-header item-title"></h5>
+				<div class ="card-body">
+					<h5 class ="card-title">Special title treatment</h5>
+					<p class = "card-text item-content"></p>
+				</div>
+				
+				<table class ="table">
+					<tbody class="detail-content">
+						<tr class ="item">
+							<td class="detail-title col-md-2">분류</td>
+							<td class="item-type col-md-10"></td>
+						</tr>
+						<tr class ="item">
+							<td class="detail-title">간략한 설명</td>
+							<td class ="item-namesub"></td>
+						</tr>
+						<tr  class="item">
+							<td class="detail-title">주소</td>
+							<td class="item-addr"></td>
+						</tr>
+						<tr  class="item">
+							<td class="detail-title">전화번호</td>
+							<td class="item-tel"></td>
+						</tr>
+						<tr  class="item">
+							<td class="detail-title">이미지</td>
+							<td class="item-img"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class ="text-end mt-2">
+			<button type="button" class ="btn btn-primary" id="chungnamListBtn">목록</button>
+		</div>
+	</div>
+	
+	<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e606ce0c708054c07480dbc81c66db4b"></script>
 	<script>
 	
 		function template(local_nm, type, nm, nm_sub, addr, tel, desc, regData, view_img) {
@@ -69,52 +118,37 @@
 				location.href="/data/chungnamView";
 			});
 		});
-	</script>
-<body>
-	<div class = "container">
-		<div class="text-center"><h3 class="mb-2">충남관광 - 관광명소 상세정보</h3></div>
-		<div class="container my-5">
-			<div class = "p-5 text-center bg-body-tertiary rounded-3">
-				<div id="map"></div>
-			</div>
-		</div>
 		
-		<div id="detailData">
-			<div class ="card" id="item-template">
-				<h5 class = "card-header item-title"></h5>
-				<div class ="card-body">
-					<h5 class ="card-title">Special title treatment</h5>
-					<p class = "card-text item-content"></p>
-				</div>
-				
-				<table class ="table">
-					<tbody class="detail-content">
-						<tr class ="item">
-							<td class="detail-title col-md-2">분류</td>
-							<td class="item-type col-md-10"></td>
-						</tr>
-						<tr class ="item">
-							<td class="detail-title">간략한 설명</td>
-							<td class ="item-namesub"></td>
-						</tr>
-						<tr  class="item">
-							<td class="detail-title">주소</td>
-							<td class="item-addr"></td>
-						</tr>
-						<tr  class="item">
-							<td class="detail-title">전화번호</td>
-							<td class="item-tel"></td>
-						</tr>
-						<tr  class="item">
-							<td class="detail-title">이미지</td>
-							<td class="item-img"></td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-		</div>
-		<div class ="text-end mt-2">
-			<button type="button" class ="btn btn-primary" id="chungnamListBtn">목록</button>
-		</div>
-	</div>
+		function initMap(lat, lng, nm, tel, addr) {
+			const container = document.getElementById('map');
+			
+			const option = {
+					center: new kakao.maps.LatLng(lat, lng),
+					level: 7
+			};
+			
+			const map = new kakao.maps.Map(container, option);
+			
+			let mapTypeControl = new kakao.maps.MapTypeControl();
+			map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
+			
+			let zoomControl = new kakao.maps.ZoomControl();
+			map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+			
+			let marker = new kakao.maps.Marker({
+				position: map.getCenter()
+			});
+			marker.setMap(map);
+			
+			let contentString ='<div style="width:150px; text-align:center;padding:6px 0;">위치</div>';
+			let infowindow = new kakao.maps.InfoWindow({
+				content: contentString,
+				removable: true
+			});
+			
+			kakao.maps.event.addListener(marker, 'click', function(){
+				infowindow.open(map, marker);
+			});
+		}
+	</script>
 </body>
