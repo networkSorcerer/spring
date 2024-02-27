@@ -140,15 +140,29 @@
 			});
 			marker.setMap(map);
 			
-			let contentString ='<div style="width:150px; text-align:center;padding:6px 0;">위치</div>';
+			/* let contentString ='<div style="width:150px; text-align:center;padding:6px 0;">위치</div>';
 			let infowindow = new kakao.maps.InfoWindow({
 				content: contentString,
 				removable: true
+			}); */
+			
+			let contentString = '<div class="card" style="width:450px;">';
+			contentString += '<h5 class="card-header">' + nm + '</h5>';
+			contentString += '<div class="card-body">';
+			contentString += ' <p class="card-text text-start">주소: ' + addr + '<br/>Tel: ' + tel + '</p>';
+			contentString += '</div>';
+			contentString += '</div>';
+
+			let infowindow = new kakao.maps.InfoWindow({
+			    content: contentString,
+			    removable: true
 			});
+
 			
 			kakao.maps.event.addListener(marker, 'click', function(){
-				infowindow.open(map, marker);
+				infowindow.open(map,marker);
 			});
+			
 		}
 	</script>
 </body>

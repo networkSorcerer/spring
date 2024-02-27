@@ -84,5 +84,33 @@ public class DataController {
 		return sb.toString();
 	}
 	
+	@GetMapping(value="/animalDeajeonView")
+	public String animalDaejeonView() {
+		log.info("대전 유기동물공고 리스트 화면");
+		
+		return "data/animalDaejeonView";
+	}
+	
+//	@ResponseBody
+//	@GetMapping(value="/animalDaejeonList", produces = "application/xml; charset=UTF-8")
+//	public String animalDaejeonList(AnimalDaejeonDTO animalDaejeonDTO) throws Exception {
+//		log.info("대전 유기동물공고 리스트");
+//		StringBuffer sb = dataService.animalDaejeonList(animalDaejeonDTO);
+//		return sb.toString();
+//	}
+//	
+//	@GetMapping("/daejeonTourView")
+//	public String daejeonTourView() {
+//		log.info("대전광역시 문화관광(관광지) 리스트 화면");
+//		
+//		return "data/daejeonTourView";
+//	}
+//	
+//	@ResponseBody
+//	@GetMapping(value="/daejeonTourList", produces = "application/json; charset=UTF-8")
+//	public String daejeonTourList() throws Exception {
+//		log.info("대전광역시 문화관광(관광지) 리스트");
+//	}
+	
 	
 }
