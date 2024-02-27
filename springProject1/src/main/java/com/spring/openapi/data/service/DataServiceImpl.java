@@ -37,4 +37,22 @@ public class DataServiceImpl implements DataService {
 		
 		return output;
 	}
+	
+	@Override
+	public StringBuffer chungnamDetail(String mng_no) throws Exception {
+		String site = "https://tour.chungnam.go.kr/_prog/openapi/?func=tour&mode=V&mng_no="+mng_no;
+		URL url = new URL(site);
+		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+		
+		int resCode = conn.getResponseCode();
+		System.out.println("응답코드 : " + resCode);
+		
+		BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
+		String inputLine;
+		StringBuffer output = new StringBuffer();
+		while((inputLine = in.readLine()) != null) {
+			output.append(inputLine);
+		}
+		return output;
+	}
 }
