@@ -1,0 +1,13 @@
+@charset "UTF-8";
+
+#item-template {
+	display:none;
+}
+
+#map {
+	height: 500px;
+}
+
+#media-template {
+	display:none;
+}

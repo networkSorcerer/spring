@@ -4,7 +4,7 @@
 
 
 
-	<link rel="stylesheet" type="text/css" href="/resources/include/css/chungnam.css"/>
+	<link rel="stylesheet" type="text/css" href="/resources/include/css/openapi.css"/>
 	<link rel="stylesheet" type="text/css" href="/resources/include/css/lightbox.css"/>
 	<script src="/resources/include/js/lightbox.min.js"></script>
 	

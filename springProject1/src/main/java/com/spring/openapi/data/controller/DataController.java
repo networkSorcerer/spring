@@ -84,13 +84,20 @@ public class DataController {
 		return sb.toString();
 	}
 	
-	@GetMapping(value="/animalDeajeonView")
+	@GetMapping(value="/animalDaejeonView")
 	public String animalDaejeonView() {
 		log.info("대전 유기동물공고 리스트 화면");
 		
 		return "data/animalDaejeonView";
 	}
 	
+	@ResponseBody
+	@GetMapping(value="/animalDaejeonList", produces ="application/xml; charset=UTF-8")
+	public String animalDaejeonList() throws Exception {
+		log.info("대전 유기동물공고 리스트");
+		StringBuffer sb = dataService.animalDaejeonList();
+		return sb.toString();
+	}
 //	@ResponseBody
 //	@GetMapping(value="/animalDaejeonList", produces = "application/xml; charset=UTF-8")
 //	public String animalDaejeonList(AnimalDaejeonDTO animalDaejeonDTO) throws Exception {

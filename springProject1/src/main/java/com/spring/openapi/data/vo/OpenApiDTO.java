@@ -10,6 +10,6 @@ import lombok.NoArgsConstructor;
 public class OpenApiDTO {
 	private String siteName;
 	private String method;
-	private String accept;
-	private String contentType;
+	//private String accept;
+	//private String contentType;
 }
