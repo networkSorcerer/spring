@@ -62,7 +62,8 @@
 	  <script src="/resources/include/js/lightbox.min.js"></script>
 	  <script type="text/javascript">
 	  function template(animalSeq, age, filePath, species, hairColor, memo, foundPlace, classification){
-		let $div = $('#list');
+		
+		  let $div = $('#list');
 		let $element = $('#media-template').clone().removeAttr('id');
 		$element.addClass("animal-list");
 		
@@ -94,6 +95,13 @@
 		    
 		    $("#searchCondition, #searchCondition3").on("change", function(){
 		    	data();
+		    })
+		    
+		    $(document).on("click", ".detailBtn", function(){
+		    	event.preventDefault();
+		    	let animalSeq = $(this).parents("div.animal-list").attr("data-seq");
+		    	//console.log("animal")
+		    	location.href = "/data/adminDaejeonItemView?animalSeq="+animalSeq;
 		    })
 		});
 

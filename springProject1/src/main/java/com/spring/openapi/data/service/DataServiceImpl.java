@@ -112,4 +112,20 @@ public class DataServiceImpl implements DataService {
 		StringBuffer result = URLConnectUtil.openAPIData(openApi);
 		return result;
 	}
+	
+	
+	@Override
+	public StringBuffer animalDaejeonItem(AnimalDaejeonDTO animalDaejeonDTO) throws Exception {
+		StringBuffer site= new StringBuffer("http://apis.data.go.kr/6300000/animalDaejeonService/animalDaejeonItem");
+		site.append("?" + URLEncoder.encode("serviceKey", "UTF-8") + "=Va8g%2BwrI2rBylM2BYEtI2nMGQz0tlWWqvFNg6SiQlqZaMizJqW9jQ15LoKxKTXWaPCs7eqiADX3QMVswr8DMLQ%3D%3D");
+		site.append("&" + URLEncoder.encode("animalSeq", "UTF-8") + "=" + animalDaejeonDTO.getAnimalSeq());
+		
+		OpenApiDTO openApi = new OpenApiDTO (site.toString(), "GET");
+		StringBuffer result = URLConnectUtil.openAPIData(openApi);
+		return result;
+		
+		
+		
+		
+	}
 }
