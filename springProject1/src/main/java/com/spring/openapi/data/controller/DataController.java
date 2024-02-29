@@ -99,6 +99,23 @@ public class DataController {
 		StringBuffer sb = dataService.animalDaejeonList(animalDaejeonDTO);
 		return sb.toString();
 	}
+	
+	@GetMapping(value="/animalDaejeonItemView")
+	public String animalDaejeonItemView() {
+		log.info("유기동물공고 현황 상세조회 화면");
+		
+		return "data/animalDaejeonItemView";
+	}
+	
+	@ResponseBody
+	@GetMapping(value="animalDaejeonItem", produces="application/xml; charset=UTF-8")
+	public String animalDaejeonItem(AnimalDaejeonDTO animalDaejeonDTO) throws Exception{
+		log.info("유기동물공고 현황 상세조회");
+		StringBuffer sb = dataService.animalDaejeonItem(animalDaejeonDTO);
+		return sb.toString();
+	}
+	
+	
 //	@ResponseBody
 //	@GetMapping(value="/animalDaejeonList", produces = "application/xml; charset=UTF-8")
 //	public String animalDaejeonList(AnimalDaejeonDTO animalDaejeonDTO) throws Exception {

@@ -25,7 +25,7 @@
         			<label for="searchConditon3">입양 상태:</label>
         		</div>
         		<div class="col-auto">
-        			<select id="searchConditon3" name="searchConditon3" class="form-select form-select-sm" aria-label="Small select example">
+        			<select id="searchCondition3" name="searchCondition3" class="form-select form-select-sm" aria-label="Small select example">
             			<option value="1">공고 중</option>
             			<option value="2">입양 가능</option>
             			<option value="3">입양 예정</option>
@@ -44,7 +44,7 @@
 	          <h3 class="mb-0 item-heading"></h3>
 	          <div class="mb-1 text-body-secondary item-color"></div>
 	          <p class="card-text mb-auto item-memo"></p>
-	          <a href="#" class="icon-link gap-1 icon-link-hover ">
+	          <a  class="icon-link gap-1 icon-link-hover detailBtn">
 	            Continue reading
 	           <!--  stretched-link<svg class="bi"><use xlink:href="#chevron-right"/></svg> -->
 	          </a>
@@ -101,7 +101,7 @@
 		    	event.preventDefault();
 		    	let animalSeq = $(this).parents("div.animal-list").attr("data-seq");
 		    	//console.log("animal")
-		    	location.href = "/data/adminDaejeonItemView?animalSeq="+animalSeq;
+		    	location.href = "/data/animalDaejeonItemView?animalSeq="+animalSeq;
 		    })
 		});
 
@@ -110,9 +110,10 @@
 		    $.ajax({
 		        url: "/data/animalDaejeonList",
 		        type: "get",
-		        data : $("#f_search").serialize(),
+		        data: $("#f_search").serialize(),
 		        dataType: "xml",
 		        success: function (data) {
+		        	
 		            $(data).find('items').each(function (index) {
 		                let animalSeq = $(this).find("animalSeq").text();
 		                let age = $(this).find("age").text();
@@ -125,7 +126,7 @@
 
 		                let foundPlace = $(this).find("foundPlace").text();
 		                let classification = $(this).find("classification").text();
-		                
+		                //console.log(animalSeq, age);
 		                template(animalSeq, age, filePath, species, hairColor, memo, foundPlace, classification)
 		            });
 		        },
