@@ -1,3 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="templates.query.reply"></mapper>
+<mapper namespace="com.spring.client.reply.dao.ReplyDao">
+	<resultMap type="reply" id="replyMap">
+		<id column="r_num" property="replyNumber"/>
+		<result column ="b_num" property="boardNumber"/>
+		<result column="r_name" property="replyName"/>
+		<result column="r_content" property="replyContent"/>
+		<result column="r_date" property="replyDate"/>
+	</resultMap>
+		
+	<select id="replyList" parameterType="reply" resultMap="replyMap">
+		select r_num, b_num, r_name, r_content,
+		to_char(r_date, 'YYYY-MM-DD HH24:MI:SS') as r_date
+		from spring_reply
+		where b_num = #{boardNumber}
+		order by r_num desc
+	</select>
+	
+</mapper>

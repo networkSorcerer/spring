@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 
 import com.spring.openapi.data.service.DataService;
+import com.spring.openapi.data.vo.AnimalDaejeonDTO;
 
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
@@ -93,9 +94,9 @@ public class DataController {
 	
 	@ResponseBody
 	@GetMapping(value="/animalDaejeonList", produces ="application/xml; charset=UTF-8")
-	public String animalDaejeonList() throws Exception {
+	public String animalDaejeonList(AnimalDaejeonDTO animalDaejeonDTO) throws Exception {
 		log.info("대전 유기동물공고 리스트");
-		StringBuffer sb = dataService.animalDaejeonList();
+		StringBuffer sb = dataService.animalDaejeonList(animalDaejeonDTO);
 		return sb.toString();
 	}
 //	@ResponseBody

@@ -9,15 +9,41 @@
 <body>
 	<div class = "container">
 		<div class="text-center"><h3 class="mb-2">대전 유기동물 공고</h3></div>
-	
+		<div class="mb-2">	
+		<form id="f_search">
+			<div class="row g-2 align-item-center">
+				<div class="col-auto">
+					<label for="searchCondition">유기 동물 구분:</label>
+				</div>
+				<div class="col-auto">
+        			<select id="searchCondition" name="searchCondition" class="form-select form-select-sm" aria-label="Small select example">
+            			<option value="1">개</option>
+            			<option value="2">고양이</option>
+        			</select>
+        		</div>
+        		<div class="col-auto">
+        			<label for="searchConditon3">입양 상태:</label>
+        		</div>
+        		<div class="col-auto">
+        			<select id="searchConditon3" name="searchConditon3" class="form-select form-select-sm" aria-label="Small select example">
+            			<option value="1">공고 중</option>
+            			<option value="2">입양 가능</option>
+            			<option value="3">입양 예정</option>
+            			<option value="4">입양 완료</option>
+            			<option value="7">주인 반환 중</option>
+        			</select>
+        		</div>
+        	</div>
+        </form>
+    </div>
 	<div class="row mb-2" id="list">
 	    <div class="col-md-6" id="media-template">
 	      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
 	        <div class="col p-4 d-flex flex-column position-static">
-	          <strong class="d-inline-block mb-2 text-primary-emphasis item-place">World</strong>
-	          <h3 class="mb-0 item-heading">Featured post</h3>
-	          <div class="mb-1 text-body-secondary item-color">Nov 12</div>
-	          <p class="card-text mb-auto item-memo">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+	          <strong class="d-inline-block mb-2 text-primary-emphasis item-place"></strong>
+	          <h3 class="mb-0 item-heading"></h3>
+	          <div class="mb-1 text-body-secondary item-color"></div>
+	          <p class="card-text mb-auto item-memo"></p>
 	          <a href="#" class="icon-link gap-1 icon-link-hover ">
 	            Continue reading
 	           <!--  stretched-link<svg class="bi"><use xlink:href="#chevron-right"/></svg> -->
@@ -65,12 +91,18 @@
 	  }
 		$(function () {
 		    data();
+		    
+		    $("#searchCondition, #searchCondition3").on("change", function(){
+		    	data();
+		    })
 		});
 
 		function data() {
+			$(".animal-list").detach();
 		    $.ajax({
 		        url: "/data/animalDaejeonList",
 		        type: "get",
+		        data : $("#f_search").serialize(),
 		        dataType: "xml",
 		        success: function (data) {
 		            $(data).find('items').each(function (index) {

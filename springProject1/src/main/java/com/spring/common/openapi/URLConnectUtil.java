@@ -48,7 +48,7 @@ public class URLConnectUtil {
 		
 		//확인을 위한 응답코드 출력
 		int resCode = conn.getResponseCode();
-		log.info("응답커드 : " + resCode);
+		log.info("응답코드 : " + resCode);
 		
 		BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
 		String inputLine;
