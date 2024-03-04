@@ -41,7 +41,7 @@ public class DataServiceImpl implements DataService {
 //		
 //		return output;
 //	}
-	
+	//시험 출제
 //	@Override
 //	public StringBuffer chungnamDetail(String mng_no) throws Exception {
 //		String site = "https://tour.chungnam.go.kr/_prog/openapi/?func=tour&mode=V&mng_no="+mng_no;
