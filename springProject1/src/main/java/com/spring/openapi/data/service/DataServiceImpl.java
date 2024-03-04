@@ -122,10 +122,18 @@ public class DataServiceImpl implements DataService {
 		
 		OpenApiDTO openApi = new OpenApiDTO (site.toString(), "GET");
 		StringBuffer result = URLConnectUtil.openAPIData(openApi);
+		return result;	
+	}
+	
+	@Override
+	public StringBuffer daejeonTourList() throws Exception {
+		StringBuffer site = new StringBuffer("https://apis.data.go.kr/6300000/openapi2022/tourspot/gettourspot");
+		site.append("?" + URLEncoder.encode("serviceKey", "UTF-8")+ "=Va8g%2BwrI2rBylM2BYEtI2nMGQz0tlWWqvFNg6SiQlqZaMizJqW9jQ15LoKxKTXWaPCs7eqiADX3QMVswr8DMLQ%3D%3D");
+		site.append("&" + URLEncoder.encode("pageNo","UTF-8")+"=" +URLEncoder.encode("1","UTF-8"));
+		site.append("&" +URLEncoder.encode("numOfRows","UTF-8")+ "=" +URLEncoder.encode("20","UTF-8"));
+		
+		OpenApiDTO openApi = new OpenApiDTO (site.toString(), "GET");
+		StringBuffer result = URLConnectUtil.openAPIData(openApi);
 		return result;
-		
-		
-		
-		
 	}
 }

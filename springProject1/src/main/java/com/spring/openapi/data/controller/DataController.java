@@ -110,10 +110,28 @@ public class DataController {
 	@ResponseBody
 	@GetMapping(value="animalDaejeonItem", produces="application/xml; charset=UTF-8")
 	public String animalDaejeonItem(AnimalDaejeonDTO animalDaejeonDTO) throws Exception{
-		log.info("유기동물공고 현황 상세조회");
+		log.info("유기동물공고 현황 상세조회");//
 		StringBuffer sb = dataService.animalDaejeonItem(animalDaejeonDTO);
 		return sb.toString();
 	}
+	
+	@GetMapping("/daejeonTourView")
+	public String daejeonTourView() {
+		log.info("대전광역시 문화관광(관광지) 리스트 화면");
+		
+		return "data/daejeonTourView";
+	}
+	
+	@ResponseBody
+	@GetMapping(value="/daejeonTourList", produces = "application/json; charset=UTF-8")
+	public String daejeonTourList() throws Exception {
+		log.info("대전광역시 문화관광(관광지) 리스트 ");
+		
+		StringBuffer sb =  dataService.daejeonTourList();
+		return sb.toString();
+	}
+	
+	
 	
 	
 //	@ResponseBody

@@ -9,7 +9,9 @@
 		<div id="reviewList">
 			<div class="card mb-2" id="item-template">
  				<div class="card-header">
+ 					<span class="reNum"></span>
 	   				<span class="name"></span>
+	   				<span class="content"></span>
 	   				<span class="date"></span>
 	   				<button type="button" data-btn="upBtn" class="btn btn-primary btn-sm">수정하기</button>
 	   				<button type="button" data-btn="delBtn" class="btn btn-primary btn-sm">삭제하기</button>
@@ -20,7 +22,7 @@
 			</div>
 		</div>
 		<script>
-			let message = "작성시 입력한 비밀번호를 입력해 주세요", btnKind="", replyTotal=0;
+			let message = "작성시 입력한 비밀번호를 입력해 주세요", btnKind="delBtn", replyTotal=0;
 			
 			$(function(){
 				let boardNumber = ${detail.boardNumber};
@@ -28,6 +30,7 @@
 			});
 			
 			function listAll(boardNumber) {
+				$(".reply").detach();
 				let url = "/replies/all/" + boardNumber;
 				$.getJSON(url, function(data) {
 					$(data).each(function(index){
