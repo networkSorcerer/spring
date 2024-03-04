@@ -9,4 +9,5 @@ import com.spring.client.reply.vo.ReplyVO;
 @Mapper
 public interface ReplyDao {
 	public List<ReplyVO> replyList(ReplyVO rvo);
+	public int replyInsert(ReplyVO rvo);
 }

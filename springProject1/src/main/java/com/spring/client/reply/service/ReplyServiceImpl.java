@@ -16,11 +16,20 @@ public class ReplyServiceImpl implements ReplyService {
 	@Setter(onMethod_= @Autowired)
 	private ReplyDao replyDao;
 	
+	//글목록 구현
 	@Override
 	public List<ReplyVO> replyList(ReplyVO rvo) {
 		List<ReplyVO> list = null;
 		list = replyDao.replyList(rvo);
 		return list;
+	}
+	
+	// 글입력 구현
+	@Override
+	public int replyInsert(ReplyVO rvo) {
+		int result = 0;
+		result = replyDao.replyInsert(rvo);
+		return result;
 	}
 	
 }
