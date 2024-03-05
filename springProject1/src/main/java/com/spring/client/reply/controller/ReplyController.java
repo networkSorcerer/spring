@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -105,5 +107,12 @@ public class ReplyController {
 		result = replyService.replyInsert(rvo);
 		return (result==1) ? "SUCCESS" : "FAILURE";
 		
+	}
+	
+	@DeleteMapping(value="/{replyNumber}", produces = MediaType.TEXT_PLAIN_VALUE)
+	public 	String replyDelete(@PathVariable("replyNumber") int replyNumber, ReplyVO rvo) {
+		rvo.setReplyNumber(replyNumber);
+		int result = replyService.replyDelete(rvo);
+		return (result==1) ? "SUCCESS": "FAILURE";
 	}
 }

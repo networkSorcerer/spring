@@ -21,4 +21,5 @@ public class BoardVO extends CommonVO {
 	private String boardDate;
 	private String boardPasswd ="";
 	private int readcnt =0;
+	private int replyCnt =0;
 }

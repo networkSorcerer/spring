@@ -10,4 +10,8 @@ import com.spring.client.reply.vo.ReplyVO;
 public interface ReplyDao {
 	public List<ReplyVO> replyList(ReplyVO rvo);
 	public int replyInsert(ReplyVO rvo);
+	
+	public int replyUpdate(ReplyVO rvo);
+	public int replyDelete(ReplyVO rvo);
+	
 }

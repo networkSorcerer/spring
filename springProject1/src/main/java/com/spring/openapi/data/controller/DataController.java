@@ -131,8 +131,21 @@ public class DataController {
 		return sb.toString();
 	}
 	
+	@GetMapping("/gyeongnammuseumView")
+	public String gyeongnammuseumView() {
+		log.info("경상남도_박물관 정보 (JSON) 조회 화면 - 리스트");
+		
+		return "data/gyeongnammuseumView";
+	}
 	
-	
+	@ResponseBody
+	@GetMapping(value="/gyeongnammuseumList", produces = "application/json; charset=UTF-8")
+	public String gyeongnammuseumList() throws Exception {
+		log.info("경상남도_박물관 정보(JSON) 조회 ");
+		
+		StringBuffer sb =  dataService.gyeongnammuseumList();
+		return sb.toString();
+	}
 	
 //	@ResponseBody
 //	@GetMapping(value="/animalDaejeonList", produces = "application/xml; charset=UTF-8")

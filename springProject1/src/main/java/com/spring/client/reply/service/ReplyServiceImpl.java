@@ -32,4 +32,11 @@ public class ReplyServiceImpl implements ReplyService {
 		return result;
 	}
 	
+	//글삭제 구현
+	public int replyDelete(ReplyVO rvo) {
+		int result = 0;
+		result = replyDao.replyDelete(rvo);
+		return result;
+	}
+	
 }

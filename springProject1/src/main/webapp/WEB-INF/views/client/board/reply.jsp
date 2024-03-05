@@ -81,8 +81,14 @@
 						}
 					});
 				});
+				//비민번호 확인 없이 삭제 버튼 제어 
+				$(document).on("click", "button[data-btn='delBtn']", function(){
+					let replyNumber = $(this).parents("div.card").attr("data-num");
+					deleteBtn(boardNumber, replyNumber);
+				});
 			});
 
+			//댓글 목록 보여주는 함수
 			function listAll(boardNumber) {
 				$(".reply").detach();
 				let url = "/replies/all/" + boardNumber;
@@ -113,6 +119,36 @@
 				$element.find('.card-body .card-text').html(replyContent);
 				
 				$div.append($element);
+			}
+			
+			//입력폼 초기화
+			function dataReset() {
+				$("#replyForm").each(function(){
+					this.reset();
+				});
+			}
+			
+			function deleteBtn(boardNumber, replyNubmer) {
+				if(confirm("선택하신 댓글을 삭제하시겠습니까?")) {
+					$.ajax({
+						url:'/replies/' + replyNumber,
+						type : 'delete',
+						headers : {
+							"X-HTTP-Method-Override" : "DELETE"
+						},
+						dataType : 'text',
+						error: function(xhr, textStatus, errorThrown) {
+							alert(textStatus + " (HTTP-" + xhr.status + " / " + errorThrown + ")");
+						},
+						success : function(result) {
+							console.log("result : " + result);
+							if(result == 'SUCCESS') {
+								alert("댓글 삭제가 완료되었습니다");
+								listAll(boardNumber);
+							}	
+						}
+					});
+				}
 			}
 		</script>
 	</body>

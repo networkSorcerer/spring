@@ -52,7 +52,12 @@
 							<c:forEach var="board" items="${boardList }" varStatus="status">
 								<tr class = "text-center" data-num="${ board.boardNumber}">
 									<td>${board.boardNumber }</td>
-									<td class="goDetail text-start">${board.boardTitle} </td>
+									<td class="goDetail text-start">
+									${board.boardTitle}
+									<c:if test="${board.replyCnt > 0 }">
+										<span class="reply_count">[${board.replyCnt}]</span>
+									</c:if>
+									</td>
 									<td class="name">${board.boardName }</td>
 									<td class="text-start">${board.boardDate }</td>
 									<td class ="text-center">${board.readcnt }</td>

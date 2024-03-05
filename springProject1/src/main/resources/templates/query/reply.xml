@@ -27,4 +27,8 @@
 				#{replyNumber},#{boardNumber},#{replyName},#{replyContent},#{replyPasswd}
 			)
 	</insert>
+	
+	<delete id="replyDelete" parameterType="reply">
+		delete from spring_reply where r_num = #{replyNumber}
+	</delete>
 </mapper>

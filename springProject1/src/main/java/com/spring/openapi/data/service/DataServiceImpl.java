@@ -136,4 +136,17 @@ public class DataServiceImpl implements DataService {
 		StringBuffer result = URLConnectUtil.openAPIData(openApi);
 		return result;
 	}
+	
+	@Override
+	public StringBuffer gyeongnammuseumList() throws Exception {
+		StringBuffer site = new StringBuffer("http://apis.data.go.kr/6480000/gyeongnammuseum/gyeongnammuseumList");
+		site.append("?" + URLEncoder.encode("serviceKey", "UTF-8")+ "=Va8g%2BwrI2rBylM2BYEtI2nMGQz0tlWWqvFNg6SiQlqZaMizJqW9jQ15LoKxKTXWaPCs7eqiADX3QMVswr8DMLQ%3D%3D");
+		site.append("&" + URLEncoder.encode("pageNo","UTF-8")+"=" +URLEncoder.encode("1","UTF-8"));
+		site.append("&" + URLEncoder.encode("numOfRows","UTF-8")+ "=" +URLEncoder.encode("20","UTF-8"));
+		site.append("&" + URLEncoder.encode("resultType","UTF-8")+ "=" +URLEncoder.encode("json","UTF-8"));
+		
+		OpenApiDTO openApi = new OpenApiDTO (site.toString(), "GET");
+		StringBuffer result = URLConnectUtil.openAPIData(openApi);
+		return result;
+	}
 }

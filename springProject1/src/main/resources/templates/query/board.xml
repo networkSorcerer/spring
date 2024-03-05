@@ -5,12 +5,13 @@
 	
 	<resultMap type="board" id="boardMap">
 		<id column="b_num" property="boardNumber"/>
-		<result column="b_name" property="boardName"></result>
-		<result column="b_title" property="boardTitle"></result>
-		<result column="b_content" property="boardContent"></result>
-		<result column="b_pwd" property="boardPasswd"></result>
-		<result column="b_date" property="boardDate"></result>
-		<result column="readcnt" property="readcnt"></result>
+		<result column="b_name" property="boardName"/>
+		<result column="b_title" property="boardTitle"/>
+		<result column="b_content" property="boardContent"/>
+		<result column="b_pwd" property="boardPasswd"/>
+		<result column="b_date" property="boardDate"/>
+		<result column="readcnt" property="readcnt"/>
+		<result column="replyCnt" property="replyCnt"/>
 	</resultMap>
 	<!-- 게시판 리스트 기본 조회 -->
 	<!-- <select id="boardList" parameterType="board" resultMap="boardMap">
@@ -113,12 +114,13 @@
 	
 	<!-- 게시판 리스트 검색 포함 조회 -->
 	<select id="boardList" parameterType="board" resultMap="boardMap">
-		SELECT b_num, b_name, b_title, to_char(b_date,'YYYY-MM-DD') as b_date, readcnt
-		FROM spring_board
+		SELECT b_num, b_name, b_title, TO_CHAR(b_date, 'YYYY-MM-DD') AS b_date, readcnt,
+    	(SELECT COUNT(r_num) FROM spring_reply WHERE b_num = boardList.b_num) AS replyCnt
+		FROM spring_board boardList
 		<where>
 			<include refid="boardSearch"></include>
 		</where>
-		ORDER BY b_num desc
+		ORDER BY b_num DESC
 	</select>
 	
 	<!-- 전체 레코드 수 조회 -->
