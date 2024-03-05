@@ -44,4 +44,15 @@ public class ReplyDaoTests {
 		
 		log.info("삭제결과 : " + result);
 	}
+	
+	@Test
+	public void testReplyUpdate() {
+		ReplyVO rvo = new ReplyVO();
+		rvo.setReplyContent("겨울이 오면 봄이 멀지 않으리");
+		rvo.setReplyPasswd("4321");
+		rvo.setReplyNumber(12);
+		int result = replyDao.replyUpdate(rvo);
+		
+		log.info("수정결과 : " + result);
+	}
 }

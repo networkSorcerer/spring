@@ -128,7 +128,7 @@
 				});
 			}
 			
-			function deleteBtn(boardNumber, replyNubmer) {
+			function deleteBtn(boardNumber, replyNumber) {
 				if(confirm("선택하신 댓글을 삭제하시겠습니까?")) {
 					$.ajax({
 						url:'/replies/' + replyNumber,

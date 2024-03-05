@@ -39,4 +39,11 @@ public class ReplyServiceImpl implements ReplyService {
 		return result;
 	}
 	
+	//글 수정 구현 
+	public int replyUpdate(ReplyVO rvo) {
+		int result = 0;
+		result = replyDao.replyDelete(rvo);
+		return result;
+	}
+	
 }

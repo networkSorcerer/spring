@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -114,5 +115,14 @@ public class ReplyController {
 		rvo.setReplyNumber(replyNumber);
 		int result = replyService.replyDelete(rvo);
 		return (result==1) ? "SUCCESS": "FAILURE";
+	}
+	
+	@PutMapping(value = "/{replyNumber}",
+			consumes = "application/json",
+			produces=MediaType.TEXT_PLAIN_VALUE )
+	public String replyUpdate (@PathVariable("replyNumber")int replyNumber, @RequestBody ReplyVO rvo) {
+		rvo.setReplyNumber(replyNumber);
+		int result = replyService.replyUpdate(rvo);
+		return (result==1) ? "SUCCESS" : "FAILURE";
 	}
 }

@@ -31,4 +31,16 @@
 	<delete id="replyDelete" parameterType="reply">
 		delete from spring_reply where r_num = #{replyNumber}
 	</delete>
+	
+	<update id = "replyUpdate" parameterType="reply">
+		update spring_reply
+		set r_content = #{replyContent}
+			,r_date = sysdate
+			<if test="replyPasswd != ''">
+				,r_pwd = #{replyPasswd}
+			</if>
+		where r_num = #{replyNumber}
+	</update>
+	
+	
 </mapper>
