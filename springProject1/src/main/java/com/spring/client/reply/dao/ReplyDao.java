@@ -13,5 +13,6 @@ public interface ReplyDao {
 	
 	public int replyUpdate(ReplyVO rvo);
 	public int replyDelete(ReplyVO rvo);
-	
+	public int replyChoiceDelete(int boardNumber);
+	public int replyCount(int boardNumber);
 }

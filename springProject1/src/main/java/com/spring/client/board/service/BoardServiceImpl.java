@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.spring.client.board.dao.BoardDAO;
 import com.spring.client.board.vo.BoardVO;
+import com.spring.client.reply.dao.ReplyDao;
 
 import lombok.Setter;
 
@@ -14,6 +15,9 @@ import lombok.Setter;
 public class BoardServiceImpl implements BoardService{
 	@Setter(onMethod_=@Autowired)
 	private BoardDAO boardDAO;
+	
+	@Setter(onMethod_=@Autowired)
+	private ReplyDao replyDao;
 	
 	//글목록 구현
 	@Override
@@ -23,6 +27,7 @@ public class BoardServiceImpl implements BoardService{
 		return list;
 	}
 	
+	//글 입력 구현
 	@Override
 	public int boardInsert(BoardVO bvo) {
 		int result = 0;
@@ -35,6 +40,8 @@ public class BoardServiceImpl implements BoardService{
 		return result;
 	}
 	
+	
+	//상세 내용 구현
 	@Override
 	public BoardVO boardDetail(BoardVO bvo) {
 		boardDAO.readCntUpdate(bvo);
@@ -46,6 +53,7 @@ public class BoardServiceImpl implements BoardService{
 		return detail;
 	}
 	
+	//수정 폼 구현
 	@Override
 	public BoardVO updateForm(BoardVO bvo) {
 		BoardVO updateData = null;
@@ -53,6 +61,7 @@ public class BoardServiceImpl implements BoardService{
 		return updateData;
 	}
 	
+	//게시글 수정 구현 
 	@Override
 	public int boardUpdate(BoardVO bvo) {
 		int result = 0;
@@ -60,6 +69,16 @@ public class BoardServiceImpl implements BoardService{
 		return result;
 	}
 	
+	//해당 게시물의 댓굴 존재 여부 확인
+	//댓글이 존재하면 댓글수 를 반환하고 존재하지 않으면 0을 반환
+	@Override
+	public int replyCount(int boardNumber) {
+		int result = 0;
+		result = replyDao.replyCount(boardNumber);
+		return result;
+	}
+	
+	//게시글 삭제 구현
 	@Override
 	public int boardDelete(BoardVO bvo) {
 		int result = 0;
@@ -67,10 +86,17 @@ public class BoardServiceImpl implements BoardService{
 		return result;
 	}
 	
+	//비밀번호 확인 구현 
 	@Override
 	public int pwdConfirm(BoardVO bvo) {
 		int result = 0;
 		result = boardDAO.pwdConfirm(bvo);
 		return result;
+	}
+
+	@Override
+	public int boardListCnt(BoardVO bvo) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
  }

@@ -60,7 +60,8 @@
 					const adoptionStatusCdArray = ["", "공고중", "입양가능", "입양예정", 
 						"입양완료", "자연사", "안락사","주민번호","임시보호","입양불가","방사",
 						"주민참여","입원중"];
-					let animalSeq = ${param.animalSeq};
+					let animalSeq = <%= request.getParameter("animalSeq") %>;
+
 					
 					 $.ajax({
 						    url: '/data/animalDaejeonList',

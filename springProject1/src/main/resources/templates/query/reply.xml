@@ -42,5 +42,12 @@
 		where r_num = #{replyNumber}
 	</update>
 	
-	
+	<!-- 댓글 개수 구하기 -->
+	<select id="replyCount" parameterType="int" resultType="int">
+		select count(r_num) from spring_reply where b_num = #{boardNumber}
+	</select>
+	<!-- 댓글 삭제(게시글 번호로 댓글 전체 삭제) -->
+	<select id="replyChoiceDelete" parameterType="reply">
+		delete from spring_reply where b_num = #{boardNumber}
+	</select>
 </mapper>

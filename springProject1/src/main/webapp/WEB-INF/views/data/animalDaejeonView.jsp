@@ -63,7 +63,7 @@
 	  <script type="text/javascript">
 	  function template(animalSeq, age, filePath, species, hairColor, memo, foundPlace, classification){
 		
-		  let $div = $('#list');
+		 let $div = $('#list');
 		let $element = $('#media-template').clone().removeAttr('id');
 		$element.addClass("animal-list");
 		

@@ -18,16 +18,41 @@ $(function(){
 		buttonCheck ="updateButton";
 	});
 	
-	$("#boardDeleteBtn").on("click", ()=> {
-		/*$("#f_data").attr({
+	
+	//삭제 버튼 클릭시 처리 이벤트
+	/*$("#boardDeleteBtn").on("click", ()=> {
+		$("#f_data").attr({
 			"method":"post",
 			"action":"/board/boardDelete"
 		});
-		$("#f_data").submit();*/
+		$("#f_data").submit();
 		
 		$("#pwdChk").css("visibility", "visible");
 		btnInit();
 		buttonCheck = "deleteButton";
+	});*/
+	
+	//삭제 버튼 클릭시 댓글 확인 후 처리 이벤트
+	$("#boardDeleteBtn").on("click", ()=> {
+		$.ajax({
+			url : "/board/replyCount",
+			type : "post",
+			data : "boardNumber=" + $("#boardNumber").val(),
+			dataType : "text",
+			error : function() {
+				alert('시스템에 문제가 있어 잠시 후 다시 진행해 주세요');
+			},
+			success : function(resultData) {
+				if(resultData==="0"){
+					$("#pwdChk").css("visibility", "visible");
+					btnInit();
+					buttonCheck = "deleteButton";
+				}else {
+					alert("댓글 존재시 게시글을 삭제할 수 없습니다. \n댓글이 전부 삭제되어야 삭제 가능합니다");
+					return;
+				}
+			}
+		});
 	});
 	
 	$("#boardPasswd").bind("keydown", function(event){
