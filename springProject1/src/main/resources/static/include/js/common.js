@@ -29,3 +29,13 @@ function checkForm(item, msg) {
 		return true;
 	}
 }
+
+function chkFile(item) {
+	let ext = item.val().split('.').pop().toLowerCase();
+	if(jQuery.inArray(ext, ['gif','png','jpg']) == -1) {
+		item.val("");
+		return false;
+	}else {
+		return true;
+	}
+}

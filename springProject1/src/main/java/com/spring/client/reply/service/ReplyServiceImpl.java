@@ -42,7 +42,7 @@ public class ReplyServiceImpl implements ReplyService {
 	//글 수정 구현 
 	public int replyUpdate(ReplyVO rvo) {
 		int result = 0;
-		result = replyDao.replyDelete(rvo);
+		result = replyDao.replyUpdate(rvo);
 		return result;
 	}
 	

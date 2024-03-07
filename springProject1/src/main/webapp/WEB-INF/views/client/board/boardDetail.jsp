@@ -7,13 +7,14 @@
 		
 		<form name="f_data" id="f_data">
 			<input type="hidden" name="boardNumber" value="${detail.boardNumber }"/>
+			<input type="hidden" name="boardFile" id="boardFile" value="${detail.boardFile}"/>
 		</form>
 		
 		
 		<div class="row text-center mb_2">
 			<div id="pwdChk" class="col-md-9 text-start">	
 				<form name="f_passwdCheck" id="f_passwdCheck" class="row g-3">
-					<input type="hidden" name="boardNumber" value="${detail.boardNumber }"/>
+					<input type="hidden" name="boardNumber" id="boardNumber" value="${detail.boardNumber }"/>
 					<div class="col-auto">
 						<label for="boardPasswd" class="visually-hidden">비밀번호</label>
 						<input type="password" class="form-control" name="boardPasswd" id="boardPasswd" placeholder="비밀번호 입력" />
@@ -63,6 +64,14 @@
 									<td>글내용</td>
 									<td class="text-start">${detail.boardContent }</td>
 								</tr>
+								<c:if test="${not empty detail.boardFile }">
+									<tr>
+										<td class="align-middle">이미지</td>
+										<td class="text-start">
+											<img src="/uploadStorage/board/${detail.boardFile }" class="rounded" width="500px"/>
+										</td>
+									</tr>
+								</c:if>
 							</table>
 						</td>
 					</tr>

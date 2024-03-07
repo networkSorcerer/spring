@@ -66,7 +66,7 @@ public class BoardController {
 //	}
 	
 	@PostMapping("/boardInsert")
-	public String boardInsert(BoardVO bvo) {
+	public String boardInsert(BoardVO bvo) throws Exception {
 		log.info("boardInsert 호출 성공 ");
 		boardService.boardInsert(bvo);
 		return "redirect:/board/boardList";
@@ -94,7 +94,7 @@ public class BoardController {
 	}
 	
 	@PostMapping("/boardUpdate")
-	public String boardUpdate(@ModelAttribute BoardVO bvo) {
+	public String boardUpdate(@ModelAttribute BoardVO bvo)throws Exception{
 		log.info("boardUpdate 호출 성공");
 		
 		int result=0;
@@ -109,22 +109,28 @@ public class BoardController {
 		}
 		return "redirect:" + url;
 	}
-	
+	//?????????????????????????????
+//	@PostMapping(value="/boardDelete")
+//	public String boardDelete(@ModelAttribute BoardVO bvo, RedirectAttributes ras) throws Exception{
+//		log.info("boardDelete 호출 성공");
+//		
+//		int result = 0;
+//		String url = "";
+//		result = boardService.boardDelete(bvo);
+//		
+//		if(result == 1) {
+//			url ="/board/boardList";
+//		}else {
+//			ras.addFlashAttribute("errorMsg", "삭제에 문제가 있어 다시 진행해 주세요");
+//			url="/board/boardDetail?boardNumber="+bvo.getBoardNumber();
+//		}
+//		return "redirect:"+url;
+//	}
 	@PostMapping(value="/boardDelete")
-	public String boardDelete(@ModelAttribute BoardVO bvo, RedirectAttributes ras) {
+	public String boardDelete(@ModelAttribute BoardVO bvo) throws Exception {
 		log.info("boardDelete 호출 성공");
-		
-		int result = 0;
-		String url = "";
-		result = boardService.boardDelete(bvo);
-		
-		if(result == 1) {
-			url ="/board/boardList";
-		}else {
-			ras.addFlashAttribute("errorMsg", "삭제에 문제가 있어 다시 진행해 주세요");
-			url="/board/boardDetail?boardNumber="+bvo.getBoardNumber();
-		}
-		return "redirect:"+url;
+		boardService.boardDelete(bvo);
+		return "redirect:/board/boardList";
 	}
 	
 	@ResponseBody

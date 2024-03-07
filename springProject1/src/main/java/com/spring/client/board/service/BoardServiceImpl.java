@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.spring.client.board.dao.BoardDAO;
 import com.spring.client.board.vo.BoardVO;
 import com.spring.client.reply.dao.ReplyDao;
+import com.spring.common.file.FileUploadUtil;
 
 import lombok.Setter;
 
@@ -28,18 +29,30 @@ public class BoardServiceImpl implements BoardService{
 	}
 	
 	//글 입력 구현
+//	@Override
+//	public int boardInsert(BoardVO bvo) {
+//		int result = 0;
+//		//예외를 발생시킬 코드 작성
+////		bvo.setBoardNumber(0);
+////		if(bvo.getBoardNumber() == 0)  {
+////			return result;
+////		}
+//		result = boardDAO.boardInsert(bvo);
+//		return result;
+//	}
+	
+	
+	//글입력 구현 (파일 업로드가 추가된 소스코드)
 	@Override
-	public int boardInsert(BoardVO bvo) {
+	public int boardInsert(BoardVO bvo) throws Exception{
 		int result = 0;
-		//예외를 발생시킬 코드 작성
-//		bvo.setBoardNumber(0);
-//		if(bvo.getBoardNumber() == 0)  {
-//			return result;
-//		}
+		if(bvo.getFile().getSize() > 0) {
+			String fileName = FileUploadUtil.fileUpload(bvo.getFile(), "board");
+			bvo.setBoardFile(fileName);
+		}
 		result = boardDAO.boardInsert(bvo);
 		return result;
 	}
-	
 	
 	//상세 내용 구현
 	@Override
@@ -63,8 +76,15 @@ public class BoardServiceImpl implements BoardService{
 	
 	//게시글 수정 구현 
 	@Override
-	public int boardUpdate(BoardVO bvo) {
+	public int boardUpdate(BoardVO bvo) throws Exception {
 		int result = 0;
+		if(!bvo.getFile().isEmpty()) {
+			if(!bvo.getBoardFile().isEmpty()) {
+				FileUploadUtil.fileDelete(bvo.getBoardFile());
+			}
+			String fileName = FileUploadUtil.fileUpload(bvo.getFile(), "board");
+			bvo.setBoardFile(fileName);
+		}
 		result = boardDAO.boardUpdate(bvo);
 		return result;
 	}
@@ -80,8 +100,11 @@ public class BoardServiceImpl implements BoardService{
 	
 	//게시글 삭제 구현
 	@Override
-	public int boardDelete(BoardVO bvo) {
+	public int boardDelete(BoardVO bvo) throws Exception {
 		int result = 0;
+		if(!bvo.getBoardFile().isEmpty()) {
+			FileUploadUtil.fileDelete(bvo.getBoardFile());
+		}
 		result = boardDAO.boardDelete(bvo);
 		return result;
 	}

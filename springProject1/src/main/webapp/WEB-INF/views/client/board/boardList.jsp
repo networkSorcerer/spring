@@ -44,6 +44,7 @@
 						<th class="col-md-2">작성자</th>
 						<th class="col-md-1">작성일</th>
 						<th class="col-md-1">조회수</th>
+						<th class="col-md-3">이미지</th>
 					</tr>
 				</thead>
 				<tbody id="list">
@@ -61,6 +62,16 @@
 									<td class="name">${board.boardName }</td>
 									<td class="text-start">${board.boardDate }</td>
 									<td class ="text-center">${board.readcnt }</td>
+									<td>
+										<c:if test="${not empty board.boardFile }">
+											<img src="/uploadStorage/board/${board.boardFile }"
+											class="rounded w-50 h-50"/>
+										</c:if>
+										<c:if test="${empty board.boardFile }">
+											<img src="/resources/images/common/noimage.png"
+											class="rounded w-50 h-50"/>
+										</c:if>
+									</td>
 								</tr>
 							</c:forEach>
 						</c:when>
