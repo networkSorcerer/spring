@@ -5,8 +5,8 @@
   <div class="container">
     <div class = "text-center"><h1>게시판 수정 화면</h1></div>
     <form action="/update" method="post" id="f_updateForm">
-    	<input type="hidden" name="boardNumber" value="${updateData.boardNumber }" id="boardNumber">
-    	<input type="hidden" name="boardFile" name="boardFile" value="${updateData.boardFile }">
+    	<input type="hidden" name="boardNumber" value="${updateData.boardNumber }" id="boardNumber"/>
+    	<input type="hidden" name="boardFile" name="boardFile" value="${updateData.boardFile }"/>
       		<div class ="text-center">
       		<table class="table table-striped">
       			<thead>
