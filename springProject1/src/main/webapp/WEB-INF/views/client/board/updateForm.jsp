@@ -6,7 +6,7 @@
     <div class = "text-center"><h1>게시판 수정 화면</h1></div>
     <form action="/update" method="post" id="f_updateForm">
     	<input type="hidden" name="boardNumber" value="${updateData.boardNumber }" id="boardNumber"/>
-    	<input type="hidden" name="boardFile" name="boardFile" value="${updateData.boardFile }"/>
+    	<input type="hidden" name="boardFile" id="boardFile" value="${updateData.boardFile }"/>
       		<div class ="text-center">
       		<table class="table table-striped">
       			<thead>
@@ -46,7 +46,7 @@
 		        <tr>
 		          	<th>이미지 파일첨부</th>
 		          	<td class="text-start">
-		          		<input type="file" name="file" id="file"class="form-control">
+		          		<input type="file" name="file" id="file" class="form-control">
 		          	</td>
 		        </tr>
 		      </table>

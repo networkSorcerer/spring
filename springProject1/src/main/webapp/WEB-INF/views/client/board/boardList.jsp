@@ -12,6 +12,8 @@
 		
 		<div id="boardSearch">
 		    <form id="f_search" name="f_search">
+		    	<input type="hidden" name="pageNum" id="pageNum" value="{pageMaker.cvo.pageNum}">
+		    	<input type="hidden" name="amount" id="amount" value="${pageMaker.cvo.amount }">
 		        <div class="row g-2 align-items-center">
 		            <label for="search">검색조건</label>
 		        </div>
@@ -84,7 +86,25 @@
 				</tbody>
 			</table>
 		</div>
-		
+		<nav aria-label="Page navigation example">
+  			<ul class="pagination justify-content-center">
+  				<c:if test="${pageMaker.prev }">
+	    			<li class="page-item disabled">
+	      				<a class="page-link">Previous</a>
+	    			</li>
+	    		</c:if>
+	    		<c:forEach var="num" begin="${pageMaker.startPage }" end ="${pageMaker.endPage }">
+				    <li class="page-item ${pageMaker.cvo.pageNum == num ? 'active':'' }">
+				    	<a href="${num }" class="page-link" href="#">${num }</a>
+				    </li>
+				</c:forEach>
+				<c:if test="${pageMaker.next }" > 
+				    <li class="page-item">
+				    	<a href="${pageMaker.endPage + 1 }"class="page-link" href="#">Next</a>
+				    </li>
+				</c:if>		
+  			</ul>
+		</nav>
 		<div class = "text-end">
 			<button type="button" id="insertFormBtn" class ="btn btn-success btn-sm">글쓰기</button>
 		</div>		

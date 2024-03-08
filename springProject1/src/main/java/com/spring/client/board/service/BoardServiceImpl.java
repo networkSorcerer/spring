@@ -116,10 +116,9 @@ public class BoardServiceImpl implements BoardService{
 		result = boardDAO.pwdConfirm(bvo);
 		return result;
 	}
-
+	//전체 레코드 수 구현 
 	@Override
 	public int boardListCnt(BoardVO bvo) {
-		// TODO Auto-generated method stub
-		return 0;
+		return boardDAO.boardListCnt(bvo);
 	}
  }

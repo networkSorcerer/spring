@@ -16,6 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.spring.client.board.service.BoardService;
 import com.spring.client.board.vo.BoardVO;
+import com.spring.common.vo.PageDTO;
 
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
@@ -27,16 +28,29 @@ public class BoardController {
 	@Setter(onMethod_=@Autowired)
 	private BoardService boardService;
 	
+//	@GetMapping("/boardList")
+//	public String boardList(@ModelAttribute BoardVO bvo, Model model) {
+//		log.info("boardList 호출 성공");
+//		
+//		//전체 레코드 조회
+//		List<BoardVO> boardList = boardService.boardList(bvo);
+//		model.addAttribute("boardList", boardList);
+//		
+//		return "client/board/boardList"; // /WEB-INF/views/client/board/boardList.jsp
+//		
+//	}
+	
 	@GetMapping("/boardList")
 	public String boardList(@ModelAttribute BoardVO bvo, Model model) {
 		log.info("boardList 호출 성공");
 		
-		//전체 레코드 조회
 		List<BoardVO> boardList = boardService.boardList(bvo);
 		model.addAttribute("boardList", boardList);
 		
-		return "client/board/boardList"; // /WEB-INF/views/client/board/boardList.jsp
+		int total = boardService.boardListCnt(bvo);
+		model.addAttribute("pageMaker", new PageDTO(bvo, total));
 		
+		return "client/board/boardList";
 	}
 	
 	@GetMapping(value="/writeForm")

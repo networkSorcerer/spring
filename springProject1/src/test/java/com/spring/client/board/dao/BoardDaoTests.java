@@ -79,17 +79,31 @@ public class BoardDaoTests {
 //		log.info("result : " + result);
 //	}
 	
+//	@Test
+//	public void testBoardList() {
+//		BoardVO bvo = new BoardVO();
+//		
+//		bvo.setSearch("b_title");
+//		bvo.setKeyword("노력");
+//		
+//		List<BoardVO> list = boardDAO.boardList(bvo);
+//		for(BoardVO vo : list) {
+//			log.info(vo.toString());
+//		}
+//		log.info("총 레코드 수 : " + boardDAO.boardListCnt(bvo));
+//	}
+	
 	@Test
 	public void testBoardList() {
 		BoardVO bvo = new BoardVO();
+		bvo.setPageNum(1);
+		bvo.setAmount(10);
 		
-		bvo.setSearch("b_title");
-		bvo.setKeyword("노력");
-		
-		List<BoardVO> list = boardDAO.boardList(bvo);
+		List<BoardVO> list= boardDAO.boardList(bvo);
 		for(BoardVO vo : list) {
 			log.info(vo.toString());
 		}
-		log.info("총 레코드 수 : " + boardDAO.boardListCnt(bvo));
+		log.info("총 레코드수 : " + boardDAO.boardListCnt(bvo)) ;
 	}
+	
 }
