@@ -1,5 +1,8 @@
 package com.spring.openapi.data.controller;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -145,6 +148,21 @@ public class DataController {
 		
 		StringBuffer sb =  dataService.gyeongnammuseumList();
 		return sb.toString();
+	}
+	
+	@GetMapping(value="/geochanggunPopulationView")
+	public String geochanggunPopulationView() {
+		log.info("경상남도 거창군_65세 이상 노인인구 현황을 보여줄 화면");
+		
+		return "data/geochanggunPopulationView";
+	}
+	
+	@ResponseBody
+	@GetMapping(value="/geochanggunPopulationList", produces="application/json; charset=UTF-8")
+	public List<Map<String, String>> geochanggunPopulationList() throws Exception{
+		log.info("경상남도 거창군_65세 이상 노인인구 현황");
+		List<Map<String, String>> result = dataService.geochanggunPopulationList();
+		return result;
 	}
 	
 //	@ResponseBody
