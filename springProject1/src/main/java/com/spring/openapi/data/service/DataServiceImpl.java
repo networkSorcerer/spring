@@ -173,7 +173,8 @@ public class DataServiceImpl implements DataService {
 		//헤더를 저장하기 위한 리스트
 		List<String> headerListKor = Arrays.asList(br.readLine().split(","));
 		//헤더와 매칭되는 영문 데이터를 저장하기 위한 리스트
-		List<String> headerListEng = Arrays.asList(new String[]{"eubmyeon", "gagusu", "ingusu", "allmen", "allwomen", "ingusu65", "men65", "women65", "ratio", "basedate"});
+		List<String> headerListEng = Arrays.asList(new String[]{"eubmyeon", "gagusu", 
+				"ingusu", "allmen", "allwomen", "ingusu65", "men65", "women65", "ratio", "basedate"});
 		Map<String, String> headerMap = new HashMap<String, String>();
 		
 		for(int i = 0; i < headerListKor.size(); i++) {
