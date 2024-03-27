@@ -86,6 +86,7 @@
 				</tbody>
 			</table>
 		</div>
+		
 		<nav aria-label="Page navigation example">
   			<ul class="pagination justify-content-center">
   				<c:if test="${pageMaker.prev }">
@@ -105,6 +106,7 @@
 				</c:if>		
   			</ul>
 		</nav>
+		
 		<div class = "text-end">
 			<button type="button" id="insertFormBtn" class ="btn btn-success btn-sm">글쓰기</button>
 		</div>		

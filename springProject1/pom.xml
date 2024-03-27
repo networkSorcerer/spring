@@ -81,6 +81,12 @@
 		    <artifactId>jakarta.servlet.jsp.jstl</artifactId>
 		</dependency>
 		
+		<!-- aop 설정 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-aop</artifactId>
+		</dependency>
+
 	</dependencies>
 
 	<build>

@@ -1,8 +1,11 @@
 package com.spring;
 
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+import com.spring.common.interceptor.LoginCheckInterceptor;
 
 /*리소드 등록 및 핸들러를 관리하는 객체인 ResourceHandlerRegistry를 통해 
 리소드의 위치와 리소스와 매칭될 url을 설정한다*/
@@ -28,5 +31,13 @@ public class WebConfig implements WebMvcConfigurer {
 		registry.addResourceHandler(connectPath)
 		.addResourceLocations(resourcePath);
 	}
+	
+	@Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(new LoginCheckInterceptor())
+                .addPathPatterns("/admin/**")
+                .excludePathPatterns("/admin/login");
+    }
+
 
 }
